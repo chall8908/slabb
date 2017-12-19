@@ -1,0 +1,13 @@
+Description:
+    Generates components for our view layer
+
+Example:
+    rails generate component Thing
+
+    This will create:
+        app/frontend/thing/thing.js
+        app/frontend/thing/thing.css
+        app/frontend/thing/index.html.erb
+        app/frontend/thing/show.html.erb
+        app/frontend/thing/edit.html.erb
+        app/frontend/thing/new.html.erb

@@ -29,10 +29,11 @@ module Slabb
     config.generators.system_tests = nil
 
     config.generators do |g|
-      g.stylesheets false
-      g.javascripts false
-      g.helper      :component
-      g.channel     assets: false
+      g.template_engine :component
+      g.jbuilder        false
+      g.assets          false
+      g.helper          false
+      g.channel         assets: false
     end
   end
 end
