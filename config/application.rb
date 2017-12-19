@@ -31,7 +31,7 @@ module Slabb
     config.generators do |g|
       g.stylesheets false
       g.javascripts false
-      g.helper      false
+      g.helper      :component
       g.channel     assets: false
     end
   end

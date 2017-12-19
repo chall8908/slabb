@@ -1,3 +1,4 @@
 plugins:
+  precss: {}
   postcss-smart-import: {}
   postcss-cssnext: {}
