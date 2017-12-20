@@ -7,5 +7,8 @@ module Postable
                          inverse_of: :reply_to,
                          dependent: :destroy
                        }
+
+    scope :with_replies, -> { includes(:replies) }
+    scope :top_level, -> { where(reply_to: nil) }
   end
 end

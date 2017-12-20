@@ -5,12 +5,13 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.relates_to current_user
+    @messages = Message.top_level.relates_to current_user
   end
 
   # GET /messages/1
   # GET /messages/1.json
   def show
+    @message = @message.with_replies
   end
 
   # GET /messages/new

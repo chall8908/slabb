@@ -5,12 +5,13 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.where(reply_to: nil)
+    @posts = Post.top_level
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = @post.with_replies
   end
 
   # GET /posts/new
