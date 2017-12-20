@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Slabb</title>
+    <title>Slabb - <%= controller_name.titleize %></title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_pack_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
+    <%# Automatically load packs for the current type %>
+    <% if File.exists? Rails.root.join(*%W{ app frontend packs #{controller_name}.js }) %>
+      <%= stylesheet_pack_tag controller_name %>
+      <%= javascript_pack_tag controller_name %>
+    <% else %>
+      <%= stylesheet_pack_tag 'application' %>
+      <%= javascript_pack_tag 'application' %>
+    <% end %>
+
+    <%= content_for :head %>
   </head>
 
   <body>
     <%# TODO: better display for these %>
-    <p class='notice'><%= notice %></p>
-    <p class='alert'><%= alert %></p>
+    <% if flash.present? %>
+      <% flash.each do |key, value| %>
+        <div class='<%= key %>'><%= value %></div>
+      <% end %>
+    <% end %>
 
     <%= yield %>
   </body>
