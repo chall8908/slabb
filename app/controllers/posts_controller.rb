@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  skip_load_resource only: :index
 
   # GET /posts
   # GET /posts.json
@@ -14,7 +15,6 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
   end
 
   # GET /posts/1/edit
@@ -24,8 +24,6 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params.merge(creator: current_user))
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
@@ -62,13 +60,9 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :body, :reply_to_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:post).permit(:title, :body, :reply_to_id)
+  end
 end

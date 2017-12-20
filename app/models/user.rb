@@ -6,4 +6,9 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :messages
+
+  def rank
+    ActiveSupport::StringInquirer.new(super)
+  end
+  delegate :user?, :moderator?, :admin?, to: :rank
 end

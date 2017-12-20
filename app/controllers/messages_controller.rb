@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
+  skip_load_resource only: :index
 
   # GET /messages
   # GET /messages.json
@@ -14,7 +15,6 @@ class MessagesController < ApplicationController
 
   # GET /messages/new
   def new
-    @message = Message.new
   end
 
   # GET /messages/1/edit
@@ -24,8 +24,6 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params.merge(sender: current_user))
-
     respond_to do |format|
       if @message.save
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
@@ -62,13 +60,9 @@ class MessagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_message
-      @message = Message.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def message_params
-      params.require(:message).permit(:title, :body, :reply_to_id, :recipient_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def message_params
+    params.require(:message).permit(:title, :body, :reply_to_id, :recipient_id)
+  end
 end

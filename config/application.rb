@@ -30,6 +30,7 @@ module Slabb
 
     config.generators do |g|
       g.template_engine :component
+      g.test_framework  :rspec
       g.jbuilder        false
       g.assets          false
       g.helper          false
