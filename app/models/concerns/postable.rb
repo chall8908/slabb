@@ -8,6 +8,8 @@ module Postable
                          dependent: :destroy
                        }
 
+    validates :body, presence: true
+
     scope :with_replies, -> { includes(:replies) }
     scope :top_level, -> { where(reply_to: nil) }
   end

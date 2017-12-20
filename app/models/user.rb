@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :posts
   has_many :messages
 
+  validates :rank, presence: true,
+                   inclusion: { in: %w{ user moderator admin } }
+
   def rank
     ActiveSupport::StringInquirer.new(super)
   end
