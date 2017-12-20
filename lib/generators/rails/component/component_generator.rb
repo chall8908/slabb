@@ -8,9 +8,10 @@ class Rails::ComponentGenerator < Rails::Generators::NamedBase
   def create_js_file
     create_file "app/frontend/#{file_name}/#{file_name}.js",
                 "import './#{file_name}.css';\n"
-    inject_into_file 'app/frontend/packs/application.js',
-                     "import '#{file_name}/#{file_name}'\n",
-                     before: "\n// End Imports\n"
+
+    # Make a new pack for each thing
+    create_file "app/frontend/packs/#{file_name}.js",
+                "import 'packs/application';\nimport '#{file_name}/#{file_name}'\n"
   end
 
   def create_css_file
