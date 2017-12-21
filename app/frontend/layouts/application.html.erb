@@ -17,6 +17,20 @@
   </head>
 
   <body>
+    <nav class='top-nav'>
+      <div class='container'>
+        <%= link_to 'SlaBB', root_path, class: 'top-nav--hero' %>
+
+        <% if current_user %>
+        <% else %>
+          <%= link_to new_user_session_path, class: 'top-nav--login' do %>
+            <span class='far fa-sign-in'></span>
+            login
+          <% end %>
+        <% end %>
+      </div>
+    </nav>
+
     <%# TODO: better display for these %>
     <% if flash.present? %>
       <% flash.each do |key, value| %>
@@ -24,6 +38,8 @@
       <% end %>
     <% end %>
 
-    <%= yield %>
+    <main class='main-content container'>
+      <%= yield %>
+    </main>
   </body>
 </html>

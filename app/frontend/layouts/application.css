@@ -1,1 +1,131 @@
 @import "normalize.css/normalize.css";
+
+@font-face {
+  font-family: Exo;
+  src: url("../../../public/fonts/Exo2/Exo2-Medium.otf") format("otf"),
+    url("../../../public/fonts/Exo2/Exo2-Medium.eot") format("eot"),
+    url("../../../public/fonts/Exo2/Exo2-Medium.woff") format("woff"),
+    url("../../../public/fonts/Exo2/Exo2-Medium.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: Lekton;
+  src: url("../../../public/fonts/Lekton/Lekton-Regular.ttf") format("ttf"),
+    url("../../../public/fonts/Lekton/Lekton-Regular.eot") format("eot"),
+    url("../../../public/fonts/Lekton/Lekton-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: Lekton;
+  font-style: italic;
+  src: url("../../../public/fonts/Lekton/Lekton-Italic.ttf") format("ttf"),
+    url("../../../public/fonts/Lekton/Lekton-Italic.eot") format("eot"),
+    url("../../../public/fonts/Lekton/Lekton-Italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: Lekton;
+  font-weight: bold;
+  src: url("../../../public/fonts/Lekton/Lekton-Bold.ttf") format("ttf"),
+    url("../../../public/fonts/Lekton/Lekton-Bold.eot") format("eot"),
+    url("../../../public/fonts/Lekton/Lekton-Bold.woff") format("woff");
+}
+
+@define-mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @mixin-content;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Lekton;
+  background: #888;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Exo;
+  font-variant: small-caps;
+}
+
+.container {
+  padding: 10px;
+}
+
+.top-nav {
+  font-family: Exo;
+  background: #333;
+  color: #eee;
+
+  &::after {
+    content: " ";
+    clear: both;
+  }
+
+  a {
+    color: #eee;
+    text-decoration: none;
+  }
+
+  &--container {
+    @extend container-base;
+
+    padding-top: 5px;
+    padding-bottom: 8px;
+  }
+
+  &--hero {
+    font-size: 1.3em;
+    font-variant: small-caps;
+  }
+
+  &--login {
+    display: block;
+    height: 35px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    float: right;
+  }
+}
+
+.main-content {
+  background: #ccc;
+
+  @extend container-base;
+
+  min-height: calc(98vh - 43px);
+  margin-top: 1vh !important;
+
+  & > :first-child {
+    margin-top: 0;
+  }
+}
+
+@mixin for-desktop-up {
+  .container {
+    width: 1100px;
+    margin: 0 auto;
+  }
+}
+
+@mixin for-big-desktop-up {
+  .container {
+    width: 1400px;
+  }
+}
