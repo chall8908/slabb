@@ -9,5 +9,3 @@
 import "layouts/application";
 
 // End Imports
-
-console.log("Hello World from Webpacker");

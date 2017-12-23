@@ -1,1 +1,67 @@
-/* stylelint-disable */
+.posts {
+  margin-bottom: 5px;
+}
+
+.post {
+  padding: 10px;
+  border-bottom: 1px solid hsl(240, 12%, 30%);
+
+  &:first-child {
+    border-top: 1px solid hsl(240, 12%, 30%);
+  }
+
+  &--preview {
+    display: inline-block;
+    width: 69.1%;
+    margin: -10px 0;
+    padding-top: 10px;
+    padding-right: 10px;
+    border-right: 1px solid hsl(240, 12%, 30%);
+    vertical-align: top;
+
+    &-title {
+      margin-top: 5px;
+    }
+
+    &-body {
+      position: relative;
+      min-height: 40px;
+      max-height: 55px;
+      margin-bottom: 0;
+      overflow: hidden;
+    }
+
+    &-more {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      text-decoration: none;
+      color: hsla(240, 6%, 60%);
+      text-shadow: 0 1px 1px hsl(0, 0%, 15%);
+      background: linear-gradient(
+        to bottom,
+        hsla(0, 0%, 15%, 0) 0%,
+        hsla(0, 0%, 15%, 1) 50%,
+        hsla(0, 0%, 15%, 1) 100%
+      );
+
+      &:hover {
+        background: linear-gradient(
+          to bottom,
+          hsla(0, 0%, 15%, 0) 0%,
+          hsla(0, 0%, 15%, 1) 70%,
+          hsla(0, 0%, 15%, 1) 100%
+        );
+        color: hsla(240, 6%, 80%);
+      }
+    }
+  }
+
+  &--info {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+  }
+}

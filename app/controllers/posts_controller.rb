@@ -5,13 +5,13 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.top_level
+    @posts = Post.top_level.includes(:creator)
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = @post.with_replies
+    @post = @post.with_replies.includes(:creator)
   end
 
   # GET /posts/new

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Slabb - <%= controller_name.titleize %></title>
+    <title>SlaBB - <%= controller_name.titleize %></title>
     <%= csrf_meta_tags %>
 
     <%# Automatically load packs for the current type %>
@@ -17,24 +17,33 @@
   </head>
 
   <body>
-    <nav class='top-nav'>
+    <header class='top-nav'>
       <div class='container'>
         <%= link_to 'SlaBB', root_path, class: 'top-nav--hero' %>
 
+        <div class='top-nav--user-actions'>
         <% if current_user %>
+          <%= button_to destroy_user_session_path, title: 'Sign Out', class: 'top-nav--logout', method: :delete do %>
+            <span class='far fa-sign-out'></span>
+          <% end %>
         <% else %>
-          <%= link_to new_user_session_path, class: 'top-nav--login' do %>
+          <%= link_to new_user_session_path, title: 'Sign In', class: 'top-nav--login' do %>
             <span class='far fa-sign-in'></span>
-            login
           <% end %>
         <% end %>
+        </div>
       </div>
-    </nav>
+    </header>
+
+    <div class='alert--notice-no-js'>
+      If you see this message, you probably have JavaScript disabled.
+      Some features will not function without JavaScript enabled.
+    </div>
 
     <%# TODO: better display for these %>
     <% if flash.present? %>
       <% flash.each do |key, value| %>
-        <div class='<%= key %>'><%= value %></div>
+        <div class='alert--<%= key %>'><%= value %></div>
       <% end %>
     <% end %>
 

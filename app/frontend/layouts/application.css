@@ -31,6 +31,16 @@
     url("../../../public/fonts/Lekton/Lekton-Bold.woff") format("woff");
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @define-mixin for-desktop-up {
   @media (min-width: 1200px) {
     @mixin-content;
@@ -50,8 +60,8 @@
 }
 
 body {
+  background: hsl(0, 0%, 13%);
   font-family: Lekton;
-  background: #888;
 }
 
 h1,
@@ -64,14 +74,15 @@ h6 {
   font-variant: small-caps;
 }
 
-.container {
-  padding: 10px;
-}
-
 .top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   font-family: Exo;
-  background: #333;
-  color: #eee;
+  background: hsl(240, 14%, 23%);
+  border-bottom: 2px solid hsl(240, 19%, 18%);
+  color: hsl(240, 8%, 80%);
 
   &::after {
     content: " ";
@@ -79,15 +90,13 @@ h6 {
   }
 
   a {
-    color: #eee;
+    color: hsl(240, 8%, 80%);
     text-decoration: none;
   }
 
-  &--container {
-    @extend container-base;
-
-    padding-top: 5px;
-    padding-bottom: 8px;
+  & .container {
+    padding: 5px 10px;
+    height: 35px;
   }
 
   &--hero {
@@ -95,25 +104,95 @@ h6 {
     font-variant: small-caps;
   }
 
-  &--login {
+  &--user-actions {
     display: block;
-    height: 35px;
-    padding-top: 5px;
+    padding-top: 3px;
     text-transform: uppercase;
     float: right;
   }
+
+  /* logout is actually a button, so we need to make it look like a link */
+  &--logout {
+    @extend .top-nav a;
+
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
 }
 
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50vw;
+  max-width: 50vw;
+  padding: 2vh 2vw;
+  text-align: justify;
+
+  &--notice {
+    @extend .alert;
+
+    background: #bce8f1;
+    color: #31708f;
+
+    &-no-js {
+      @extend .alert--notice;
+
+      margin-left: -27vw;
+      animation: 1s ease 2s both fade-in;
+    }
+  }
+}
+
+$main-accent: hsl(240, 12%, 30%);
+
 .main-content {
-  background: #ccc;
+  background: hsl(0, 0%, 15%);
+  min-height: calc(98vh - 60px);
+  margin-top: 60px !important;
+  border: 1px solid $main-accent;
+  border-radius: 3px;
+  color: hsl(240, 5%, 80%);
 
-  @extend container-base;
-
-  min-height: calc(98vh - 43px);
-  margin-top: 1vh !important;
-
-  & > :first-child {
+  & > .header:first-child {
     margin-top: 0;
+    margin-bottom: 5px;
+  }
+}
+
+.header {
+  padding: 10px;
+  padding-top: 5px;
+  background: $main-accent;
+
+  &--right {
+    float: right;
+  }
+
+  &--button {
+    display: inline-block;
+    background: hsl(240, 10%, 38%);
+    border: none;
+    border-bottom: 1px solid hsl(240, 8%, 20%);
+    margin-top: -1px;
+    padding: 5px 10px;
+    color: inherit;
+    text-decoration: none;
+
+    &:active {
+      border-bottom: none;
+      margin-top: 0;
+    }
+  }
+}
+
+.pagination {
+  padding: 5px 10px;
+
+  &--pages {
+    float: right;
   }
 }
 

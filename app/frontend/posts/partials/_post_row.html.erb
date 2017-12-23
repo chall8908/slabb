@@ -1,0 +1,17 @@
+<section class='post'>
+  <div class='post--preview'>
+    <h3 class='post--preview-title'><%= post.title %></h3>
+    <p class='post--preview-body'>
+      <%= post.body %>
+      <%= link_to '#', class: 'post--preview-more' do %>
+        more<span class='far fa-angle-down'></span>
+      <% end %>
+    </p>
+  </div>
+
+  <div class='post--info'>
+    [User what posted this] <br />
+    [Number of replies] <br />
+    [Info on most recent reply]
+  </div>
+</section>
