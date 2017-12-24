@@ -5,13 +5,19 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.top_level.includes(:creator)
+    @posts = Post.top_level
+               .includes(:creator)
+               .paginate(page: params.fetch(:page, 1), per_page: 25)
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @thread = Post.thread_for(params[:id]).includes(:creator)
+    # Lookup the thread separate from the post so that we always have access to
+    # both
+    @thread = Post.thread_for(params[:id])
+                .includes(:creator)
+                .paginate(page: params.fetch(:page, 1), per_page: 25)
   end
 
   # GET /posts/new

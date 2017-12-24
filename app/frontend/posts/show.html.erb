@@ -6,9 +6,12 @@
   </small>
 </h2>
 
+<% page_info = page_entries_info @thread %>
+<% pagination = will_paginate @thread %>
+
 <nav class='pagination'>
-  <span class='pagination--info'>[Number of posts]</span>
-  <span class='pagination--pages'>[Page navigation]</span>
+  <span class='pagination--info'><%= page_info %></span>
+  <span class='pagination--pages'><%= pagination %></span>
 </nav>
 
 <div class='thread'>
@@ -18,6 +21,6 @@
 </div>
 
 <nav class='pagination'>
-  <span class='pagination--info'>[Number of posts]</span>
-  <span class='pagination--pages'>[Page navigation]</span>
+  <span class='pagination--info'><%= page_info %></span>
+  <span class='pagination--pages'><%= pagination %></span>
 </nav>
