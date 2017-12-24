@@ -74,6 +74,14 @@ h6 {
   font-variant: small-caps;
 }
 
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .top-nav {
   position: fixed;
   top: 0;
@@ -91,7 +99,6 @@ h6 {
 
   a {
     color: hsl(240, 8%, 80%);
-    text-decoration: none;
   }
 
   & .container {

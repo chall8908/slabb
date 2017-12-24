@@ -19,6 +19,10 @@
     border-right: 1px solid hsl(240, 12%, 30%);
     vertical-align: top;
 
+    & > a {
+      color: hsl(240, 5%, 80%);
+    }
+
     &-title {
       margin-top: 5px;
     }
@@ -63,5 +67,33 @@
     display: inline-block;
     width: 30%;
     vertical-align: top;
+  }
+
+  &--creator {
+    &-admin {
+      color: hsl(190, 74%, 58%);
+    }
+
+    &-moderator {
+      color: hsl(350, 68%, 58%);
+    }
+
+    &-id {
+      color: hsla(0, 0%, 80%, 0.3);
+    }
+  }
+}
+
+.thread {
+  @extend .posts;
+
+  .post--body {
+    @extend .post--preview;
+
+    height: 100%;
+    border-right: none;
+    border-left: 1px solid hsl(240, 12%, 30%);
+    padding: 10px;
+    margin-bottom: -10px;
   }
 }

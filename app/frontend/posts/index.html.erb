@@ -12,9 +12,7 @@
 </nav>
 
 <div class='posts'>
-  <% @posts.each do |post| %>
-    <%= render 'post_row', post: post %>
-  <% end %>
+  <%= render @posts %>
 </div>
 
 <nav class='pagination'>

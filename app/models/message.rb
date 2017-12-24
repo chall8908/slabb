@@ -5,4 +5,6 @@ class Message < ApplicationRecord
   belongs_to :recipient, class_name: 'User', required: true
 
   scope :relates_to, lambda { |user| where('"sender_id" = :id OR "recipient_id" = :id', id: user.id) }
+
+  scope :with_replies, -> { includes(replies: [:sender, :recipient]) }
 end

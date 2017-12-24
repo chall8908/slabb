@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = @post.with_replies.includes(:creator)
+    @thread = Post.thread_for(params[:id]).includes(:creator)
   end
 
   # GET /posts/new

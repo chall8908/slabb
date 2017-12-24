@@ -14,7 +14,7 @@ module Postable
 
     validates :body, presence: true
 
-    scope :with_replies, -> { includes(:replies) }
-    scope :top_level, -> { where(parent: nil) }
+    scope :top_level, -> { where(parent: nil).with_replies }
+    scope :thread_for, -> postable_id { where('id = :id OR parent_id = :id', id: postable_id) }
   end
 end

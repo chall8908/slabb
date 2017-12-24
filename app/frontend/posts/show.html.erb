@@ -1,2 +1,23 @@
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<h2 class='header'>
+  <%= @post.title %>
+
+  <small class='header--right'>
+    <%= link_to 'New Post', new_post_path, class: 'header--button' %>
+  </small>
+</h2>
+
+<nav class='pagination'>
+  <span class='pagination--info'>[Number of posts]</span>
+  <span class='pagination--pages'>[Page navigation]</span>
+</nav>
+
+<div class='thread'>
+  <% @thread.each do |post| %>
+    <%= render 'thread', post: post %>
+  <% end %>
+</div>
+
+<nav class='pagination'>
+  <span class='pagination--info'>[Number of posts]</span>
+  <span class='pagination--pages'>[Page navigation]</span>
+</nav>
