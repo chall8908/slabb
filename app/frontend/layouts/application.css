@@ -82,6 +82,11 @@ a {
   }
 }
 
+button {
+  outline: none;
+  cursor: pointer;
+}
+
 .top-nav {
   position: fixed;
   top: 0;
@@ -125,8 +130,6 @@ a {
     padding: 0;
     background: none;
     border: none;
-    outline: none;
-    cursor: pointer;
   }
 }
 

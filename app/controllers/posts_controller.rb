@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   load_and_authorize_resource
   skip_load_resource only: :index
 
+  before_action :ensure_top_level, only: :show
+
   # GET /posts
   # GET /posts.json
   def index
@@ -33,7 +35,15 @@ class PostsController < ApplicationController
   def create
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html do
+          redirect_path = if @post.top_level?
+                            @post
+                          else
+                            post_path(@post.parent_id, page: (Post.where(parent_id: @post.parent_id).count / 25.0).ceil)
+                          end
+
+          redirect_to redirect_path, notice: 'Post was successfully created.'
+        end
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -46,8 +56,10 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post.update(post_params.except(:reply_to_id))
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+      if @post.update(post_params.except(:parent_id))
+        # Figuring out the appropriate page is probably too difficult to deal
+        # with.  Ideally, this will be handled with JavaScript and won't matter.
+        format.html { redirect_to post_path(@post.parent_id || @post), notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -71,5 +83,9 @@ class PostsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def post_params
     params.require(:post).permit(:title, :body, :parent_id)
+  end
+
+  def ensure_top_level
+    redirect_to post_path(@post.parent_id) unless @post.top_level?
   end
 end

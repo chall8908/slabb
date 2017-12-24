@@ -1,6 +1,6 @@
-<%= form_with(model: post, local: true) do |form| %>
+<%= form_with(model: post, local: true, class: 'post--form') do |form| %>
   <% if post.errors.any? %>
-    <div id="error_explanation">
+    <div class='post--form-errors'>
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
@@ -11,17 +11,23 @@
     </div>
   <% end %>
 
-  <div>
-    <label>Title</label>
-    <%= form.text_field :title %>
-  </div>  
+  <% unless post.parent.present? %>
+    <div>
+      <label>Title</label>
+      <%= form.text_field :title %>
+    </div>
+  <% else %>
+    <%= form.hidden_field :parent_id %>
+  <% end %>
 
   <div>
     <label>Body</label>
     <%= form.text_area :body %>  
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="post--form-actions">
+    <% button_text = 'Edit Post' if post.persisted? %>
+    <% button_text ||= post.parent_id.present? ? 'Post Reply' : 'Create Post' %>
+    <%= form.button button_text, name: nil, class: 'post--form-submit' %>
   </div>
 <% end %>

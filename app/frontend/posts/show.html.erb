@@ -2,7 +2,7 @@
   <%= @post.title %>
 
   <small class='header--right'>
-    <%= link_to 'New Post', new_post_path, class: 'header--button' %>
+    <%= link_to 'Post Reply', '#reply-form', class: 'header--button' %>
   </small>
 </h2>
 
@@ -24,3 +24,8 @@
   <span class='pagination--info'><%= page_info %></span>
   <span class='pagination--pages'><%= pagination %></span>
 </nav>
+
+<a id='reply-form'></a>
+<div class='thread--reply-form'>
+  <%= render 'form', post: Post.new(parent: @post) %>
+</div>

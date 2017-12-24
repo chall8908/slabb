@@ -17,4 +17,8 @@ module Postable
     scope :top_level, -> { where(parent: nil).with_replies }
     scope :thread_for, -> postable_id { where('id = :id OR parent_id = :id', id: postable_id) }
   end
+
+  def top_level?
+    parent_id.blank?
+  end
 end
