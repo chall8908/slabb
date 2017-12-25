@@ -97,6 +97,7 @@ button {
   background: hsl(240, 14%, 23%);
   border-bottom: 2px solid hsl(240, 19%, 18%);
   color: hsl(240, 8%, 80%);
+  z-index: 1;
 
   &::after {
     content: " ";

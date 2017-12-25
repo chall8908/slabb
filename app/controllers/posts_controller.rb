@@ -10,6 +10,8 @@ class PostsController < ApplicationController
     @posts = Post.top_level
                .includes(:creator)
                .paginate(page: params.fetch(:page, 1), per_page: 25)
+
+    @posts = @posts.with_deleted if can? :see_deleted, @posts
   end
 
   # GET /posts/1
@@ -20,6 +22,8 @@ class PostsController < ApplicationController
     @thread = Post.thread_for(params[:id])
                 .includes(:creator)
                 .paginate(page: params.fetch(:page, 1), per_page: 25)
+
+    @thread = @thread.with_deleted if can? :see_deleted, @thread
   end
 
   # GET /posts/new

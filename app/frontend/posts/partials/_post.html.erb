@@ -1,9 +1,12 @@
-<section class='post'>
+<section class='post<%= post.deleted? ? ' deleted' : ''%>'>
   <div class='post--preview'>
     <%= link_to post do %>
       <h3 class='post--preview-title'><%= post.title %></h3>
     <% end %>
     <div class='post--preview-body'>
+      <% if post.deleted? %>
+        Deleted <%= post.deleted_at %>
+      <% end %>
       <%= markdownify post.body %>
       <%= link_to '#', class: 'post--preview-more' do %>
         more<span class='far fa-angle-down'></span>

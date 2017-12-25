@@ -1,4 +1,4 @@
-<section class='post'>
+<section class='post<%= post.deleted? ? ' deleted' : ''%>'>
   <div class='post--info'>
     <div class='post--info-creator'>
       <%= display_user post %>
@@ -6,6 +6,9 @@
   </div>
 
   <div class='post--body'>
+    <% if post.deleted? %>
+      Deleted <%= post.deleted_at %>
+    <% end %>
     <%= markdownify post.body %>
   </div>
 </section>
