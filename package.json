@@ -14,7 +14,8 @@
     "normalize.css": "^7.0.0",
     "postcss-scss": "^1.0.2",
     "precss": "^2.0.0",
-    "rails-ujs": "^5.1.4"
+    "rails-ujs": "^5.1.4",
+    "tomorrow-css": "^1.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.1",

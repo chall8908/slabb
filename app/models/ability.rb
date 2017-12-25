@@ -17,8 +17,8 @@ class Ability
       can [:read, :create], Message, sender_id: user.id
       # Can read messages where they are the recipient
       can :read, Message, recipient_id: user.id
-      # Can manage their own posts
-      can :manage, Post, creator_id: user.id
+      # Be specific here to preven users seeing their own deleted posts
+      can [:create, :update, :delete], Post, creator_id: user.id
 
       if user.admin?
         can :manage, :all

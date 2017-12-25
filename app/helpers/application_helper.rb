@@ -1,7 +1,7 @@
 module ApplicationHelper
   HTML_PIPLINE = HTML::Pipeline.new [ HTML::Pipeline::MarkdownFilter,
                                       HTML::Pipeline::EmojiFilter,
-                                      HTML::Pipeline::SyntaxHighlightFilter
+                                      HTML::Pipeline::RougeFilter
                                     ], { gfm: true,
                                          asset_root: '/images'
                                        }

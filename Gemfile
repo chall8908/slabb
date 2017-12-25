@@ -35,7 +35,7 @@ gem 'will_paginate', '~> 3.1'
 # Markdown support
 gem 'commonmarker', '~> 0.17.7'
 # Syntax hilighting
-gem 'github-linguist', '~> 5.3'
+gem 'html-pipeline-rouge_filter', '~> 1.0'
 # EMOJI!
 gem 'gemoji', '~> 3.0'
 gem 'html-pipeline', '~> 2.7'

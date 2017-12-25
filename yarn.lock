@@ -6626,6 +6626,10 @@ to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
 
+tomorrow-css@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/tomorrow-css/-/tomorrow-css-1.0.1.tgz#f43b7e784a11f90117c5bd2e30c0d3cb1b18bae2"
+
 tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.3.3.tgz#0b618a5565b6dea90bf3425d04d55edc475a7561"

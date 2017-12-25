@@ -61,6 +61,11 @@
         color: hsl(240, 6%, 80%);
       }
     }
+
+    & .highlight {
+      padding: 5px;
+      margin: 5px 0;
+    }
   }
 
   &--info {
