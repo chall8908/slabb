@@ -27,7 +27,7 @@ gem 'webpacker', '~> 3.1'
 gem 'devise', '~> 4.3'
 gem 'cancancan', '~> 2.1'
 
-gem 'active-audit', '~> 0.2'
+gem 'audited', '~> 4.5'
 gem 'paranoid2', '~> 1.1'
 
 gem 'will_paginate', '~> 3.1'
