@@ -3,12 +3,12 @@
     <%= link_to post do %>
       <h3 class='post--preview-title'><%= post.title %></h3>
     <% end %>
-    <p class='post--preview-body'>
-      <%= post.body %>
+    <div class='post--preview-body'>
+      <%= markdownify post.body %>
       <%= link_to '#', class: 'post--preview-more' do %>
         more<span class='far fa-angle-down'></span>
       <% end %>
-    </p>
+    </div>
   </div>
 
   <div class='post--info'>

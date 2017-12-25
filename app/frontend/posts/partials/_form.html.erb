@@ -14,15 +14,14 @@
   <% unless post.parent.present? %>
     <div>
       <label>Title</label>
-      <%= form.text_field :title %>
+      <%= form.text_field :title, class: 'post--form-title' %>
     </div>
   <% else %>
     <%= form.hidden_field :parent_id %>
   <% end %>
 
   <div>
-    <label>Body</label>
-    <%= form.text_area :body %>  
+    <%= form.text_area :body, class: 'post--form-body' %>
   </div>
 
   <div class="post--form-actions">

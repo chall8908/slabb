@@ -9,6 +9,10 @@ class Ability
     can :read, Post
 
     if user
+      # Users can read other users
+      can :read, User
+      # Users can update themselves
+      can :update, User, id: user.id
       # Can read and create messages where they are the sender
       can [:read, :create], Message, sender_id: user.id
       # Can read messages where they are the recipient
