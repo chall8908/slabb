@@ -25,8 +25,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'webpacker', '~> 3.1'
 
 gem 'devise', '~> 4.3'
-gem 'activeadmin', '~> 1.1'
 gem 'cancancan', '~> 2.1'
+
+gem 'active-audit', '~> 0.2'
+gem 'paranoid2', '~> 1.1'
 
 gem 'will_paginate', '~> 3.1'
 

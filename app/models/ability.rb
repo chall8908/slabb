@@ -18,8 +18,9 @@ class Ability
 
       if user.admin?
         can :manage, :all
+        can :see_deleted, :all
       elsif user.moderator?
-        can :manage, Post
+        can [:manage, :see_deleted], Post
       end
     end
   end

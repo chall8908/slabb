@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # For some reason, this model gets loaded on the CLI which causes this to
+  # explode.  I'll need to figure out where it's being loaded...
+  audit :username, :email, :locked_at, :locked_for, :deleted_at rescue nil
   devise :database_authenticatable, :lockable, :registerable,
          :rememberable, :validatable,
          lock_strategy: :none,

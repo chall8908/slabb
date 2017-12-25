@@ -2,6 +2,7 @@ module Postable
   extend ActiveSupport::Concern
 
   included do
+    audit :title, :body, :deleted_at
     belongs_to :parent, { class_name: self.to_s,
                           required: false,
                           foreign_key: 'parent_id'
