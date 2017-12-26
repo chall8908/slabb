@@ -1,4 +1,4 @@
-# Small, Lightweight, Accessible Bulliten Board
+# Small, Lightweight, Accessible Bulletin Board
 
 A minimal board for minimal needs
 
