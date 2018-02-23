@@ -1,6 +1,3 @@
-@import "normalize.css/normalize.css";
-@import "tomorrow-css/css/tomorrow_night.css";
-
 @font-face {
   font-family: Exo;
   src: url("../../../public/fonts/Exo2/Exo2-Medium.otf") format("otf"),
@@ -62,7 +59,7 @@
 
 body {
   background: hsl(0, 0%, 13%);
-  font-family: Lekton;
+  font-family: Lekton, monospace;
 }
 
 h1,
@@ -71,7 +68,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Exo;
+  font-family: Exo, monospace;
   font-variant: small-caps;
 }
 
@@ -93,7 +90,7 @@ button {
   top: 0;
   left: 0;
   right: 0;
-  font-family: Exo;
+  font-family: Exo, monospace;
   background: hsl(240, 14%, 23%);
   border-bottom: 2px solid hsl(240, 19%, 18%);
   color: hsl(240, 8%, 80%);
@@ -160,20 +157,6 @@ button {
 
 $main-accent: hsl(240, 12%, 30%);
 
-.main-content {
-  background: hsl(0, 0%, 15%);
-  min-height: calc(98vh - 60px);
-  margin-top: 60px !important;
-  border: 1px solid $main-accent;
-  border-radius: 3px;
-  color: hsl(240, 5%, 80%);
-
-  & > .header:first-child {
-    margin-top: 0;
-    margin-bottom: 5px;
-  }
-}
-
 .header {
   padding: 10px;
   padding-top: 5px;
@@ -205,6 +188,20 @@ $main-accent: hsl(240, 12%, 30%);
 
   &--pages {
     float: right;
+  }
+}
+
+.main-content {
+  background: hsl(0, 0%, 15%);
+  min-height: calc(98vh - 60px);
+  margin-top: 60px !important;
+  border: 1px solid $main-accent;
+  border-radius: 3px;
+  color: hsl(240, 5%, 80%);
+
+  & > .header:first-child {
+    margin-top: 0;
+    margin-bottom: 5px;
   }
 }
 
