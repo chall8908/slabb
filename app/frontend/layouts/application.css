@@ -39,18 +39,6 @@
   }
 }
 
-@define-mixin for-desktop-up {
-  @media (min-width: 1200px) {
-    @mixin-content;
-  }
-}
-
-@define-mixin for-big-desktop-up {
-  @media (min-width: 1800px) {
-    @mixin-content;
-  }
-}
-
 *,
 *::before,
 *::after {
@@ -205,14 +193,14 @@ $main-accent: hsl(240, 12%, 30%);
   }
 }
 
-@mixin for-desktop-up {
+@media (min-width: 1200px) {
   .container {
     width: 1100px;
     margin: 0 auto;
   }
 }
 
-@mixin for-big-desktop-up {
+@media (min-width: 1800px) {
   .container {
     width: 1400px;
   }
