@@ -1,9 +1,11 @@
 <h2 class='header'>
   Posts
 
-  <small class='header--right'>
-    <%= link_to 'New Post', new_post_path, class: 'header--button' %>
-  </small>
+  <% if can?(:create, Post) %>
+    <small class='header--right'>
+      <%= link_to 'New Post', new_post_path, class: 'header--button' %>
+    </small>
+  <% end %>
 </h2>
 
 <% page_info = page_entries_info @posts %>

@@ -14,7 +14,7 @@ class User < ApplicationRecord
                    inclusion: { in: %w{ user moderator admin } }
 
   def rank
-    ActiveSupport::StringInquirer.new(super)
+    super.inquiry
   end
   delegate :user?, :moderator?, :admin?, to: :rank
 end

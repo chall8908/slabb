@@ -1,3 +1,5 @@
+$main-accent: hsl(240, 14%, 23%);
+
 .posts {
   margin-bottom: 5px;
 }
@@ -94,6 +96,29 @@
   }
 
   &--form {
+    padding: 10px;
+
+    &-body,
+    &-title {
+      display: block;
+      width: 100%;
+      min-height: 20vh;
+      padding: 5px;
+      margin-bottom: 5px;
+      background: $main-accent;
+      border-color: hsl(240, 8%, 20%);
+      border-radius: 3px;
+      outline: none;
+      color: hsl(240, 6%, 80%);
+      box-shadow: 0 0 5px hsl(240, 8%, 20%) inset;
+      font-family: Lekton, monospace;
+    }
+
+    &-title {
+      border-width: 0;
+      min-height: 2em;
+    }
+
     &-submit {
       display: inline-block;
       background: hsl(240, 10%, 38%);
@@ -132,25 +157,6 @@
       &:last-child {
         margin-bottom: 0;
       }
-    }
-  }
-
-  &--reply-form {
-    padding: 10px;
-
-    & .post--form-body {
-      display: block;
-      width: 100%;
-      min-height: 20vh;
-      padding: 5px;
-      margin-bottom: 5px;
-      background: hsl(240, 12%, 25%);
-      border-color: hsl(240, 8%, 20%);
-      border-radius: 3px;
-      outline: none;
-      color: hsl(240, 6%, 80%);
-      box-shadow: 0 0 5px hsl(240, 8%, 20%) inset;
-      font-family: Lekton;
     }
   }
 }
