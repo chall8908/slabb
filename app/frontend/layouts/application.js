@@ -8,6 +8,8 @@ import "fontawesome-pro-5.0.2/web-fonts-with-css/css/fontawesome-all.min.css";
 import "fontawesome-pro-5.0.2/svg-with-js/css/fa-svg-with-js.css";
 import "fontawesome-pro-5.0.2/svg-with-js/js/fontawesome-all.min";
 import "./application.css";
+// eslint-disable-next-line
+import "devise/sessions/sessions.css";
 
 // Remove the no JS warning if they have JS turned on.  :D
 window.onload = function() {
