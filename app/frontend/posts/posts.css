@@ -79,6 +79,10 @@ $main-accent: hsl(240, 14%, 23%);
     display: inline-block;
     width: 30%;
     vertical-align: top;
+
+    & .badge {
+      margin: 0 5px;
+    }
   }
 
   &--creator {

@@ -3,10 +3,17 @@
     <div class='post--info-creator'>
       <%= display_user post %>
       <% if post.edited? %>
-        <i class='fa fa-edit' title='Last Edited'></i> <span title='<%= post.updated_at %>'><%= time_ago_in_words(post.updated_at) %> ago</span>
+        <span class='badge' title='Last edited <%= post.updated_at %>'>
+          <i class='fa fa-edit'></i>
+          <%= time_ago_in_words(post.updated_at) %> ago
+        </span>
       <% end %>
+
       <% if post.deleted? %>
-        <i class='fa fa-trash' title='Deleted'></i> <span title='<%= post.deleted_at %>'><%= time_ago_in_words(post.deleted_at) %> ago</span>
+        <span class='badge' title='Deleted <%= post.deleted_at %>'>
+          <i class='fa fa-trash'></i>
+          <%= time_ago_in_words(post.deleted_at) %> ago
+        </span>
       <% end %>
     </div>
   </div>
