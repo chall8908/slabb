@@ -1,6 +1,5 @@
 import "normalize.css";
 import "tomorrow-css/css/tomorrow_night.css";
-import Rails from "rails-ujs";
 import { Application } from "stimulus";
 import { definitionsFromContext } from "stimulus/webpack-helpers";
 
@@ -12,8 +11,6 @@ import "./application.css";
 const application = Application.start();
 const context = require.context(".", true, /.js$/);
 application.load(definitionsFromContext(context));
-
-Rails.start();
 
 // Remove the no JS warning if they have JS turned on.  :D
 window.onload = function() {
