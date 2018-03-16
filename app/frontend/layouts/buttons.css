@@ -1,3 +1,7 @@
+form.button_to {
+  display: inline;
+}
+
 .button {
   display: inline-block;
   background: hsl(240, 10%, 38%);

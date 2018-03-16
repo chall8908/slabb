@@ -4,5 +4,9 @@ Rails.application.routes.draw do
 
   devise_for :users, only: :sessions
 
-  resources :posts#, :messages
+  resources :posts do#, :messages
+    member do
+      put :restore
+    end
+  end
 end

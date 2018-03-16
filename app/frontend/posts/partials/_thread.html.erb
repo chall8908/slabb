@@ -1,21 +1,39 @@
 <section class='post<%= post.deleted? ? ' deleted' : ''%>'>
   <div class='post--info'>
-    <div class='post--info-creator'>
-      <%= display_user post %>
-      <% if post.edited? %>
-        <span class='badge' data-wide-tip data-title='Last edited <%= post.updated_at %>'>
-          <i class='fa fa-edit'></i>
-          <%= time_ago_in_words(post.updated_at) %> ago
-        </span>
+    <span class='post--info-creator'><%= display_user post %></span>
+
+    <% if post.edited? %>
+      <span class='badge' data-wide-tip data-title='Last edited <%= post.updated_at %>'>
+        <i class='fa fa-pencil'></i>
+        <%= time_ago_in_words(post.updated_at) %> ago
+      </span>
+    <% end %>
+
+    <% if post.deleted? %>
+      <span class='badge' data-wide-tip data-title='Deleted <%= post.deleted_at %>'>
+        <i class='fa fa-trash'></i>
+        <%= time_ago_in_words(post.deleted_at) %> ago
+      </span>
+
+
+      <% if can?(:delete, post) %>
+        <%= button_to restore_post_path(post), class: 'post--action', method: :put, data: { title: 'Restore' } do %>
+          <i class='fa fa-reply'></i>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% if can?(:delete, post) %>
+        <%= button_to post_path(post), class: 'post--action', method: :delete, data: { title: 'Delete' } do %>
+          <i class='fa fa-trash'></i>
+        <% end %>
       <% end %>
 
-      <% if post.deleted? %>
-        <span class='badge' data-wide-tip data-title='Deleted <%= post.deleted_at %>'>
-          <i class='fa fa-trash'></i>
-          <%= time_ago_in_words(post.deleted_at) %> ago
-        </span>
+      <% if can?(:edit, post) %>
+        <%= link_to edit_post_path(post), class: 'post--action', data: { title: 'Edit' } do %>
+          <i class='fa fa-edit'></i>
+        <% end %>
       <% end %>
-    </div>
+    <% end %>
   </div>
 
   <div class='post--body'>

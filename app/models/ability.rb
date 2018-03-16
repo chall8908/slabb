@@ -4,6 +4,7 @@ class Ability
   def initialize(user)
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+    alias_action :restore, to: :delete
 
     # Everyone can read posts
     can :read, Post

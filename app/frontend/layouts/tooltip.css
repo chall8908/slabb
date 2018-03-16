@@ -34,7 +34,7 @@
   content: attr(data-title);
   width: 120px;
   padding: 4px;
-  margin: 0 0 4px -60px;
+  margin: 0 0 8px -60px;
   font: normal 11px/16px Arial, Sans-serif;
   color: #fff;
   cursor: default;

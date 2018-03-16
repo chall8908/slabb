@@ -30,8 +30,6 @@
     <% button_text ||= post.parent_id.present? ? 'Post Reply' : 'Create Post' %>
     <%= form.button button_text, name: nil, class: 'post--form-submit button' %>
 
-    <% unless post.parent.present? %>
-      <%= link_to 'Cancel', post, class: 'button' %>
-    <% end %>
+    <%= link_to 'Cancel', post.parent.present? ? post.parent : post, class: 'button' %>
   </div>
 <% end %>

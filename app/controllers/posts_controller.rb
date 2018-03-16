@@ -1,13 +1,14 @@
 class PostsController < ApplicationController
+  before_action :load_deleted, only: :restore
+
   load_and_authorize_resource
-  skip_load_resource only: :index
 
   before_action :ensure_top_level, only: :show
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.top_level
+    @posts = @posts.top_level
                .includes(:creator)
                .paginate(page: params.fetch(:page, 1), per_page: 25)
 
@@ -77,7 +78,16 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to @post.top_level? ? posts_path : post_path(@post.parent_id), notice: 'Post was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  # PUT /posts/1/restore
+  def restore
+    @post.restore(recursive: true)
+    respond_to do |format|
+      format.html { redirect_to @post, notice: 'Post was successfully restored.' }
       format.json { head :no_content }
     end
   end
@@ -91,5 +101,9 @@ class PostsController < ApplicationController
 
   def ensure_top_level
     redirect_to post_path(@post.parent_id) unless @post.top_level?
+  end
+
+  def load_deleted
+    @post = Post.with_deleted.find(params[:id])
   end
 end
