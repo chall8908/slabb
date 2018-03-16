@@ -41,6 +41,7 @@
 
 @import "tooltip.css";
 @import "badge.css";
+@import "buttons.css";
 
 $main-accent: hsl(240, 14%, 23%);
 
@@ -155,22 +156,6 @@ button {
 
   &--right {
     float: right;
-  }
-
-  &--button {
-    display: inline-block;
-    background: hsl(240, 10%, 38%);
-    border: none;
-    border-bottom: 1px solid hsl(240, 8%, 20%);
-    margin-top: -1px;
-    padding: 5px 10px;
-    color: inherit;
-    text-decoration: none;
-
-    &:active {
-      border-bottom: none;
-      margin-top: 0;
-    }
   }
 }
 
