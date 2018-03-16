@@ -3,14 +3,14 @@
     <div class='post--info-creator'>
       <%= display_user post %>
       <% if post.edited? %>
-        <span class='badge' title='Last edited <%= post.updated_at %>'>
+        <span class='badge' data-wide-tip data-title='Last edited <%= post.updated_at %>'>
           <i class='fa fa-edit'></i>
           <%= time_ago_in_words(post.updated_at) %> ago
         </span>
       <% end %>
 
       <% if post.deleted? %>
-        <span class='badge' title='Deleted <%= post.deleted_at %>'>
+        <span class='badge' data-wide-tip data-title='Deleted <%= post.deleted_at %>'>
           <i class='fa fa-trash'></i>
           <%= time_ago_in_words(post.deleted_at) %> ago
         </span>

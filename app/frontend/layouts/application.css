@@ -39,6 +39,7 @@
   }
 }
 
+@import "tooltip.css";
 @import "badge.css";
 
 $main-accent: hsl(240, 14%, 23%);

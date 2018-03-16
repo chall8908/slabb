@@ -14,5 +14,5 @@ application.load(definitionsFromContext(context));
 
 // Remove the no JS warning if they have JS turned on.  :D
 window.onload = function() {
-  document.getElementsByClassName("alert--notice-no-js")[0].remove();
+  document.querySelector(".alert--notice-no-js").remove();
 };

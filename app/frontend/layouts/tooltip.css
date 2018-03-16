@@ -1,0 +1,69 @@
+/**
+ * CSS3 Tooltips
+ * Created by Martin Ivanov
+ * http://wemakesites.net
+ *
+ * Slightly modified to show the tip on top and to not vanish immediately on mouseout
+ */
+
+/* the tooltip will be applied to any element, containing data-title attribute */
+[data-title] {
+  position: relative;
+  padding: 0;
+}
+
+[data-title]::before,
+[data-title]::after {
+  position: absolute;
+  left: 50%;
+  bottom: 1em;
+  z-index: 5;
+  opacity: 0;
+  visibility: hidden;
+  background: #000;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.8);
+  -moz-transition: opacity 200ms 50ms linear, visibility 200ms 50ms linear;
+  -webkit-transition: opacity 200ms 50ms linear, visibility 200ms 50ms linear;
+  -ms-transition: opacity 200ms 50ms linear, visibility 200ms 50ms linear;
+  -o-transition: opacity 200ms 50ms linear, visibility 200ms 50ms linear;
+  transition: opacity 200ms 50ms linear, visibility 200ms 50ms linear;
+}
+
+/* the tooltip */
+[data-title]::before {
+  content: attr(data-title);
+  width: 120px;
+  padding: 4px;
+  margin: 0 0 4px -60px;
+  font: normal 11px/16px Arial, Sans-serif;
+  color: #fff;
+  cursor: default;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Add a wider variant */
+[data-title][data-wide-tip]::before {
+  width: 200px;
+  margin-left: -100px;
+}
+
+/* the pointer */
+[data-title]::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin: 0 0 0 -4px;
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+/* Show tooltip on hover */
+[data-title]:hover::before,
+[data-title]:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
