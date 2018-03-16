@@ -2,13 +2,16 @@
   <div class='post--info'>
     <div class='post--info-creator'>
       <%= display_user post %>
+      <% if post.edited? %>
+        <i class='fa fa-edit' title='Last Edited'></i> <span title='<%= post.updated_at %>'><%= time_ago_in_words(post.updated_at) %> ago</span>
+      <% end %>
+      <% if post.deleted? %>
+        <i class='fa fa-trash' title='Deleted'></i> <span title='<%= post.deleted_at %>'><%= time_ago_in_words(post.deleted_at) %> ago</span>
+      <% end %>
     </div>
   </div>
 
   <div class='post--body'>
-    <% if post.deleted? %>
-      Deleted <%= post.deleted_at %>
-    <% end %>
     <%= markdownify post.body %>
   </div>
 </section>

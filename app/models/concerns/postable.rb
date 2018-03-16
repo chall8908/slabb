@@ -22,4 +22,9 @@ module Postable
   def top_level?
     parent_id.blank?
   end
+
+  # For newly created posts, created_at == updated_at
+  def edited?
+    self.created_at != self.updated_at
+  end
 end
