@@ -23,8 +23,29 @@ module Postable
     parent_id.blank?
   end
 
-  # For newly created posts, created_at == updated_at
   def edited?
-    self.created_at != self.updated_at
+    last_edit.present?
+  end
+
+  def edited_at
+    last_edit.created_at
+  end
+
+  def edited_by
+    last_edit.user
+  end
+
+  def deleted_by
+    last_delete.user
+  end
+
+  private
+
+  def last_edit
+    @_last_edit ||= self.audits.where("jsonb_typeof(audited_changes->'body') = 'array'").last
+  end
+
+  def last_delete
+    @_last_delete ||= self.audits.where(action: :destroy).last
   end
 end

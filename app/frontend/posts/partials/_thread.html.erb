@@ -5,14 +5,14 @@
     <% if post.edited? %>
       <span class='badge' data-wide-tip data-title='Last edited <%= post.updated_at %>'>
         <i class='fa fa-pencil'></i>
-        <%= time_ago_in_words(post.updated_at) %> ago
+        <%= time_ago_in_words(post.edited_at) %> ago by <%= post.edited_by.username %>
       </span>
     <% end %>
 
     <% if post.deleted? %>
       <span class='badge' data-wide-tip data-title='Deleted <%= post.deleted_at %>'>
         <i class='fa fa-trash'></i>
-        <%= time_ago_in_words(post.deleted_at) %> ago
+        <%= time_ago_in_words(post.deleted_at) %> ago by <%= post.deleted_by.username %>
       </span>
 
 
