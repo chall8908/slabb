@@ -1,5 +1,5 @@
 class ApplicationRecord < ActiveRecord::Base
-  paranoid
+  acts_as_paranoid
 
   self.abstract_class = true
 end
